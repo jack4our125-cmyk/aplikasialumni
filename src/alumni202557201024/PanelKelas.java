@@ -8,12 +8,12 @@ package alumni202557201024;
  *
  * @author Hype G12
  */
-public class PanelAbout extends javax.swing.JPanel {
+public class PanelKelas extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelGuru
      */
-    public PanelAbout() {
+    public PanelKelas() {
         initComponents();
     }
 
@@ -37,8 +37,10 @@ public class PanelAbout extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -60,7 +62,7 @@ public class PanelAbout extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Data Guru");
+        jLabel3.setText("Data Kelas");
         jPanel1.add(jLabel3, java.awt.BorderLayout.LINE_START);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-multiply-20.png"))); // NOI18N
@@ -74,11 +76,11 @@ public class PanelAbout extends javax.swing.JPanel {
         jPanel3.setMinimumSize(new java.awt.Dimension(300, 592));
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 592));
 
-        jLabel1.setText("NIP");
+        jLabel1.setText("kode kelas");
 
-        jLabel2.setText("NAMA");
+        jLabel2.setText("nama kelas");
 
-        jLabel5.setText("JENIS KELAMIN");
+        jLabel5.setText("tingkatan");
 
         jTextField1.setText("jTextField1");
 
@@ -86,9 +88,13 @@ public class PanelAbout extends javax.swing.JPanel {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel6.setText("ALAMAT");
+        jLabel7.setText("jurusan");
 
-        jTextField3.setText("jTextField1");
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel8.setText("wali kelas");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -97,15 +103,17 @@ public class PanelAbout extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,10 +131,14 @@ public class PanelAbout extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(235, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.LINE_START);
@@ -224,12 +236,15 @@ public class PanelAbout extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -240,6 +255,5 @@ public class PanelAbout extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
