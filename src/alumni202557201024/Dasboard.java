@@ -6,6 +6,7 @@ package alumni202557201024;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -32,9 +33,8 @@ public class Dasboard extends javax.swing.JFrame {
         panelcontent.add(new PanelJurusan(),"jurusan");
         panelcontent.add(new PanelGuru(),"guru");
         panelcontent.add(new PanelSiswa(),"siswa");
-        panelcontent.add(new Panelkelas(),"kelas");
+        panelcontent.add(new PanelKelas(),"kelas");
         panelcontent.add(new PanelAbout(),"about");
-        panelcontent.add(new PanelLogout(),"logout");
     }
 
     /**
@@ -214,7 +214,22 @@ public class Dasboard extends javax.swing.JFrame {
 
     private void blogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blogoutActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(panelcontent, "logout");
+        int pilihan = JOptionPane.showConfirmDialog(null,
+                "Apakah Anda Yakin ingin keluar?",
+                "Konfirmasi",
+                JOptionPane.YES_NO_OPTION);
+        
+        switch(pilihan){
+           case JOptionPane.YES_OPTION:
+               dispose();
+               new Framelogin().setVisible(true);
+               break;
+            case JOptionPane.NO_OPTION:
+                break;
+                default:
+                    break;
+    
+        }
     }//GEN-LAST:event_blogoutActionPerformed
 
     /**
