@@ -34,6 +34,7 @@ public class Dasboard extends javax.swing.JFrame {
         panelcontent.add(new PanelGuru(),"guru");
         panelcontent.add(new PanelSiswa(),"siswa");
         panelcontent.add(new PanelAbout(),"about");
+        panelcontent.add(new PanelKelas(),"kelas");
     }
 
     /**
