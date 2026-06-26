@@ -194,7 +194,7 @@ public class Dasboard extends javax.swing.JFrame {
 
     private void bdashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdashboardActionPerformed
         // TODO add your handling code here:
-        cardLayout.show(panelcontent, "dashboard ");
+        cardLayout.show(panelcontent, "dashboard");
     }//GEN-LAST:event_bdashboardActionPerformed
 
     private void bjurusanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjurusanActionPerformed
