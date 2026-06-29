@@ -5,8 +5,15 @@
 package alumni202557201024;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.mysql.cj.jdbc.PreparedStatementWrapper;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -34,11 +41,11 @@ public class Framelogin extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        tUserName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         tclose = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        btnLogin = new javax.swing.JButton();
+        tPassword = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -52,6 +59,7 @@ public class Framelogin extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(102, 153, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("USER LOGIN");
 
@@ -63,10 +71,12 @@ public class Framelogin extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("LOGIN");
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLogin.setText("LOGIN");
+        btnLogin.addActionListener(this::btnLoginActionPerformed);
 
-        jPasswordField1.setText("jPasswordField1");
+        tPassword.setText("jPasswordField1");
+        tPassword.addActionListener(this::tPasswordActionPerformed);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,13 +95,13 @@ public class Framelogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tUserName, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(tclose, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -104,13 +114,13 @@ public class Framelogin extends javax.swing.JFrame {
                 .addGap(76, 76, 76)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addGap(4, 4, 4)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addComponent(jButton2)
+                .addComponent(btnLogin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -143,6 +153,50 @@ public class Framelogin extends javax.swing.JFrame {
         System.exit (0);
     }//GEN-LAST:event_tcloseMouseClicked
 
+    private void tPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tPasswordActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        // Ambil teks yang dimasukkan user pada field username
+        String username = tUserName.getText();
+           
+        //ambil teks yang di masukkan usr pada fiel password
+        String password = tPassword.getText();
+       
+        if (username.length() != 0 && password.length() != 0) {
+        try {
+                //query sql untuk menacari user dengan username dan password(dihash dengan md5)
+                String sql = "SELECT * from user WHERE username=? AND password=md5(?)";
+                //buat koneksi ke database
+                Connection con = koneksi.konek();
+                //saipakan statement sql dengan parameter 
+                PreparedStatement ps = con.prepareStatement(sql);
+                //isi parameter pertama(?) dengan user name
+                ps.setString(1, username);
+                //isi parameter kedua (?)dengan password yang akan di hash Md5 disisi database
+                ps.setString(2, password);
+                //jalankan query dan ambiil hasilnya
+                ResultSet rs = ps.executeQuery();
+                //jika hasil query memiliki baris (berarti login berhasil)
+                if (rs.next()) {
+                    //tutup form login
+                    dispose();
+                    //buka form dashboard
+                    new Dasboard().setVisible(true);
+                } else {
+                    //jika data tidak ditemukan tampilkan pesan error
+                    JOptionPane.showMessageDialog(null, "Username/password salah");
+                }
+        
+        } catch (SQLException sQLException){
+                //jika terjafi kesalah sql tampilakan pesan error
+          JOptionPane.showMessageDialog(null,sQLException.getMessage());
+        }
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -169,14 +223,14 @@ public class Framelogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField tPassword;
+    private javax.swing.JTextField tUserName;
     private javax.swing.JButton tclose;
     // End of variables declaration//GEN-END:variables
 }
