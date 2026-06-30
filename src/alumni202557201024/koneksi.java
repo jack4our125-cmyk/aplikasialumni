@@ -18,11 +18,11 @@ public class koneksi {
     public static Connection konek(){
         
         try {
-            String url = "jdbc:mysql://localhost:3306/alumni_202557201024";
+            String url = "jdbc:mysql://localhost:3307/alumni_202557201024";
             
             String user = "root";
             
-            String pass = "itmdigdaya";
+            String pass = "";
             
             mysqlconfig = DriverManager.getConnection(url, user, pass);
             
