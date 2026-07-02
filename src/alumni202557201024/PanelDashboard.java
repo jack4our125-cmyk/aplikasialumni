@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package alumni202557201024;
-
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 /**
  *
  * @author Hype G12
@@ -15,7 +18,62 @@ public class PanelDashboard extends javax.swing.JPanel {
      */
     public PanelDashboard() {
         initComponents();
+        isiJumlahDataDasbor();
     }
+private void isiJumlahDataDasbor() {
+    // Membuka koneksi ke database
+    Connection conn = koneksi.konek();
+
+    try {
+        // Mengambil jumlah jurusan dari tabel jurusan
+        String sqlJurusan = "SELECT COUNT(*) AS jumlah FROM jurusan";
+        Statement psJurusan = conn.createStatement();
+        ResultSet rsJurusan = psJurusan.executeQuery(sqlJurusan);
+
+        // Jika hasil query ada, ambil dan tampilkan ke label jumlah jurusan
+        if (rsJurusan.next()) {
+            int jumlah = rsJurusan.getInt("jumlah");
+            tJumlahJurusan.setText(String.valueOf(jumlah));
+        }
+
+        // Mengambil jumlah guru dari tabel guru
+        String sqlGuru = "SELECT COUNT(*) AS jumlah FROM guru";
+        Statement psGuru = conn.createStatement();
+        ResultSet rsGuru = psGuru.executeQuery(sqlGuru);
+
+        // Jika hasil query ada, ambil dan tampilkan ke label jumlah guru
+        if (rsGuru.next()) {
+            int jumlah = rsGuru.getInt("jumlah");
+            tJumlahGuru.setText(String.valueOf(jumlah));
+        }
+
+        // Mengambil jumlah siswa dari tabel siswa
+        String sqlSiswa = "SELECT COUNT(*) AS jumlah FROM siswa";
+        Statement psSiswa = conn.createStatement();
+        ResultSet rsSiswa = psSiswa.executeQuery(sqlSiswa);
+
+        // Jika hasil query ada, ambil dan tampilkan ke label jumlah siswa
+        if (rsSiswa.next()) {
+            int jumlah = rsSiswa.getInt("jumlah");
+            tJumlahSiswa.setText(String.valueOf(jumlah));
+        }
+
+        // Mengambil jumlah kelas dari tabel kelas
+        String sqlKelas = "SELECT COUNT(*) AS jumlah FROM kelas";
+        Statement psKelas = conn.createStatement();
+        ResultSet rsKelas = psKelas.executeQuery(sqlKelas);
+
+        // Jika hasil query ada, ambil dan tampilkan ke label jumlah kelas
+        if (rsKelas.next()) {
+            int jumlah = rsKelas.getInt("jumlah");
+            tJumlahKelas.setText(String.valueOf(jumlah));
+        }
+
+    } catch (SQLException e) {
+        // Menampilkan pesan di konsol jika terjadi error saat mengambil data
+        System.err.println("Gagal mengambil jumlah data");
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,19 +89,19 @@ public class PanelDashboard extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        tJumlahJurusan = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        tJumlahGuru = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        tJumlahSiswa = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        tJumlahKelas = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 20));
         setLayout(new java.awt.CardLayout());
@@ -70,15 +128,15 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel2.setPreferredSize(new java.awt.Dimension(46, 30));
         jPanel3.add(jLabel2, java.awt.BorderLayout.PAGE_START);
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("JJ");
-        jLabel1.setMaximumSize(new java.awt.Dimension(124, 42));
-        jLabel1.setMinimumSize(new java.awt.Dimension(124, 42));
-        jLabel1.setOpaque(true);
-        jLabel1.setPreferredSize(new java.awt.Dimension(124, 42));
-        jPanel3.add(jLabel1, java.awt.BorderLayout.CENTER);
+        tJumlahJurusan.setBackground(new java.awt.Color(255, 255, 255));
+        tJumlahJurusan.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        tJumlahJurusan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tJumlahJurusan.setText("JJ");
+        tJumlahJurusan.setMaximumSize(new java.awt.Dimension(124, 42));
+        tJumlahJurusan.setMinimumSize(new java.awt.Dimension(124, 42));
+        tJumlahJurusan.setOpaque(true);
+        tJumlahJurusan.setPreferredSize(new java.awt.Dimension(124, 42));
+        jPanel3.add(tJumlahJurusan, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
@@ -103,15 +161,15 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(46, 30));
         jPanel6.add(jLabel3, java.awt.BorderLayout.PAGE_START);
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("JG");
-        jLabel4.setMaximumSize(new java.awt.Dimension(124, 42));
-        jLabel4.setMinimumSize(new java.awt.Dimension(124, 42));
-        jLabel4.setOpaque(true);
-        jLabel4.setPreferredSize(new java.awt.Dimension(124, 42));
-        jPanel6.add(jLabel4, java.awt.BorderLayout.CENTER);
+        tJumlahGuru.setBackground(new java.awt.Color(255, 255, 255));
+        tJumlahGuru.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        tJumlahGuru.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tJumlahGuru.setText("JG");
+        tJumlahGuru.setMaximumSize(new java.awt.Dimension(124, 42));
+        tJumlahGuru.setMinimumSize(new java.awt.Dimension(124, 42));
+        tJumlahGuru.setOpaque(true);
+        tJumlahGuru.setPreferredSize(new java.awt.Dimension(124, 42));
+        jPanel6.add(tJumlahGuru, java.awt.BorderLayout.CENTER);
 
         jPanel5.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
@@ -136,15 +194,15 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel5.setPreferredSize(new java.awt.Dimension(46, 30));
         jPanel8.add(jLabel5, java.awt.BorderLayout.PAGE_START);
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("JK");
-        jLabel6.setMaximumSize(new java.awt.Dimension(124, 42));
-        jLabel6.setMinimumSize(new java.awt.Dimension(124, 42));
-        jLabel6.setOpaque(true);
-        jLabel6.setPreferredSize(new java.awt.Dimension(124, 42));
-        jPanel8.add(jLabel6, java.awt.BorderLayout.CENTER);
+        tJumlahSiswa.setBackground(new java.awt.Color(255, 255, 255));
+        tJumlahSiswa.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        tJumlahSiswa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tJumlahSiswa.setText("JK");
+        tJumlahSiswa.setMaximumSize(new java.awt.Dimension(124, 42));
+        tJumlahSiswa.setMinimumSize(new java.awt.Dimension(124, 42));
+        tJumlahSiswa.setOpaque(true);
+        tJumlahSiswa.setPreferredSize(new java.awt.Dimension(124, 42));
+        jPanel8.add(tJumlahSiswa, java.awt.BorderLayout.CENTER);
 
         jPanel7.add(jPanel8, java.awt.BorderLayout.PAGE_START);
 
@@ -169,15 +227,15 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel7.setPreferredSize(new java.awt.Dimension(46, 30));
         jPanel10.add(jLabel7, java.awt.BorderLayout.PAGE_START);
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("JS");
-        jLabel8.setMaximumSize(new java.awt.Dimension(124, 42));
-        jLabel8.setMinimumSize(new java.awt.Dimension(124, 42));
-        jLabel8.setOpaque(true);
-        jLabel8.setPreferredSize(new java.awt.Dimension(124, 42));
-        jPanel10.add(jLabel8, java.awt.BorderLayout.CENTER);
+        tJumlahKelas.setBackground(new java.awt.Color(255, 255, 255));
+        tJumlahKelas.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        tJumlahKelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tJumlahKelas.setText("JS");
+        tJumlahKelas.setMaximumSize(new java.awt.Dimension(124, 42));
+        tJumlahKelas.setMinimumSize(new java.awt.Dimension(124, 42));
+        tJumlahKelas.setOpaque(true);
+        tJumlahKelas.setPreferredSize(new java.awt.Dimension(124, 42));
+        jPanel10.add(tJumlahKelas, java.awt.BorderLayout.CENTER);
 
         jPanel9.add(jPanel10, java.awt.BorderLayout.PAGE_START);
 
@@ -188,14 +246,10 @@ public class PanelDashboard extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -206,5 +260,9 @@ public class PanelDashboard extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel tJumlahGuru;
+    private javax.swing.JLabel tJumlahJurusan;
+    private javax.swing.JLabel tJumlahKelas;
+    private javax.swing.JLabel tJumlahSiswa;
     // End of variables declaration//GEN-END:variables
 }
