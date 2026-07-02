@@ -187,9 +187,9 @@ void load_tabel_siswa() {
         tHP = new javax.swing.JTextField();
         tAlamat = new javax.swing.JTextField();
         tTanggal = new com.toedter.calendar.JDateChooser();
-        cJenisKelamin = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         cKelas = new javax.swing.JComboBox<>();
+        cJenisKelamin = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSiswa = new javax.swing.JTable();
@@ -244,7 +244,7 @@ void load_tabel_siswa() {
         btnHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHapus.setForeground(new java.awt.Color(255, 255, 255));
         btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-trash-20.png"))); // NOI18N
-        btnHapus.setText("Tambah");
+        btnHapus.setText("Hapus");
         btnHapus.addActionListener(this::btnHapusActionPerformed);
 
         btnTambah.setBackground(new java.awt.Color(0, 204, 0));
@@ -258,14 +258,14 @@ void load_tabel_siswa() {
         btnReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnReset.setForeground(new java.awt.Color(255, 255, 255));
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-reset-20 (1).png"))); // NOI18N
-        btnReset.setText("Tambah");
+        btnReset.setText("Reset");
         btnReset.addActionListener(this::btnResetActionPerformed);
 
         btnUbah.setBackground(new java.awt.Color(255, 153, 51));
         btnUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUbah.setForeground(new java.awt.Color(255, 255, 255));
         btnUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-write-20.png"))); // NOI18N
-        btnUbah.setText("Tambah");
+        btnUbah.setText("Ubah");
         btnUbah.addActionListener(this::btnUbahActionPerformed);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -322,21 +322,17 @@ void load_tabel_siswa() {
 
         jLabel7.setText("Tamggal Lahir");
 
-        jLabel8.setText("Nis");
+        jLabel8.setText("nomer HP");
 
         jLabel9.setText("kelas");
 
-        jLabel10.setText("Nis");
+        jLabel10.setText("Alamat");
 
         tHP.setText("jTextField1");
 
-        tAlamat.setText("jTextField7");
-
-        cJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setText("jenis kelamin");
 
-        cKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki - laki", "Perempuan" }));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -355,8 +351,8 @@ void load_tabel_siswa() {
                     .addComponent(tNamaSiswa)
                     .addComponent(jLabel6)
                     .addComponent(tTempatLahir)
-                    .addComponent(cJenisKelamin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cJenisKelamin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(52, 52, 52)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)

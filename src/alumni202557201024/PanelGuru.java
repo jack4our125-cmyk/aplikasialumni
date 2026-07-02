@@ -159,7 +159,7 @@ void load_tabel_guru() {
 
         tNamaGuru.setText("jTextField1");
 
-        cJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki laki", "Perempuan" }));
 
         jLabel6.setText("ALAMAT");
 
